@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -9,7 +10,9 @@ import (
 	"os"
 	"time"
 
+	"github.com/bxcodec/faker/v3"
 	"github.com/go-sql-driver/mysql"
+	"github.com/gofiber/fiber/v2"
 	"gopkg.in/yaml.v2"
 )
 
@@ -26,6 +29,10 @@ type QueuedEmail struct {
 	Name   string
 	Email  string
 	Status uint64
+}
+
+type Seed struct {
+	db *sql.DB
 }
 
 var database *sql.DB
@@ -48,9 +55,36 @@ func main() {
 
 	database = InitDatabase()
 
+	//	UserSeed()
+
+	app := fiber.New()
+
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("Hello, World 👋!")
+	})
+
+	// GET /api/register
+	app.Post("/api/create", func(c *fiber.Ctx) error {
+
+		//	data, _ := json.MarshalIndent(app.Stack(), "", "  ")
+		//	fmt.Println(string(data))
+		requestBody := c.Body()
+		var email QueuedEmail
+		json.Unmarshal(requestBody, &email)
+		_, err := database.Exec(`INSERT INTO users(name, email,status) VALUES (?,?,?)`, email.Name, email.Email, email.Status)
+		if err != nil {
+			panic(err)
+		}
+		json.NewEncoder(c).Encode(email)
+		return nil
+	}).Name("api")
+
+	go app.Listen(":3000")
+
 	// do a forever for loop here that repetedly query the database and check for any record that has
 
 	for {
+		//	UserSeed()
 
 		newRecords := checkForNewRecords()
 
@@ -88,16 +122,16 @@ func processEmail(queuedEmail QueuedEmail) {
 }
 
 func sendEmail(queuedEmail QueuedEmail) error {
-	logger.Println("Sending sms to", queuedEmail.Email)
-	fmt.Println("Sending sms to", queuedEmail.Email)
+	//	logger.Println("Sending sms to", queuedEmail.Email)
+	fmt.Println("Sending Email to", queuedEmail.Email)
 
-	send_email(queuedEmail)
+	//	send_email(queuedEmail)
 
 	return nil
 }
 
 func checkForNewRecords() *sql.Rows {
-	rows, err := database.Query("select id, name, email from users WHERE status = 0 LIMIT 10")
+	rows, err := database.Query("select id, name, email from users WHERE status = 0 LIMIT 500")
 	if err != nil {
 		logger.Println("Error on new records checking ..", err)
 	}
@@ -185,4 +219,20 @@ func InitDatabase() *sql.DB {
 	}
 
 	return database
+}
+
+func UserSeed() {
+
+	for i := 0; i < 100; i++ {
+		//prepare the statement
+		//	stmt, _ := s.db.Prepare(`INSERT INTO users(name, email) VALUES (?,?)`)
+		// execute query
+		//	_, err := stmt.Exec(faker.Name(), faker.Email())
+
+		_, err := database.Exec(`INSERT INTO users(name, email,status) VALUES (?,?,?)`, faker.Name(), faker.Email(), 0)
+		if err != nil {
+			panic(err)
+		}
+
+	}
 }
