@@ -73,9 +73,16 @@ func main() {
 		json.Unmarshal(requestBody, &email)
 		_, err := database.Exec(`INSERT INTO users(name, email,status) VALUES (?,?,?)`, email.Name, email.Email, email.Status)
 		if err != nil {
-			panic(err)
+
+			//	panic(err)
+
+			fmt.Println("error creating user:", email.Name)
+			json.NewEncoder(c).Encode("error creating user:")
+			return nil
+			//	json.NewEncoder(c).Encode("error creating user:")
 		}
-		json.NewEncoder(c).Encode(email)
+
+		json.NewEncoder(c).Encode("received Email: " + email.Email)
 		return nil
 	}).Name("api")
 
