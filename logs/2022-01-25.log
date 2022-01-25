@@ -1,0 +1,63 @@
+2022/01/25 15:28:18 Starting application
+2022/01/25 15:28:18 Error on new records checking .. Error 1054: Unknown column 'email' in 'field list'
+2022/01/25 15:30:12 Starting application
+2022/01/25 15:30:12 Error writting new records to queued sms struct
+2022/01/25 15:30:14 Error writting new records to queued sms struct
+2022/01/25 15:30:16 Error writting new records to queued sms struct
+2022/01/25 15:30:18 Error writting new records to queued sms struct
+2022/01/25 15:30:20 Error writting new records to queued sms struct
+2022/01/25 15:30:22 Error writting new records to queued sms struct
+2022/01/25 15:30:24 Error writting new records to queued sms struct
+2022/01/25 15:30:26 Error writting new records to queued sms struct
+2022/01/25 15:35:54 Starting application
+2022/01/25 15:35:54 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:35:56 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:35:58 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:36:00 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:36:02 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:36:04 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:37:59 Starting application
+2022/01/25 15:37:59 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:38:01 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:38:50 Starting application
+2022/01/25 15:38:50 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:38:52 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:38:54 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:39:05 Starting application
+2022/01/25 15:39:05 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:39:07 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:39:09 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:39:11 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:39:13 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:39:15 Error writting new records to queued sms struct sql: expected 3 destination arguments in Scan, not 4
+2022/01/25 15:39:34 Starting application
+2022/01/25 15:39:34 Status change for id  1
+2022/01/25 15:39:36 Status change for id  1
+2022/01/25 15:41:25 Starting application
+2022/01/25 15:41:25 Status change for id  1
+2022/01/25 15:41:27 Status change for id  1
+2022/01/25 15:41:30 Status change for id  1
+2022/01/25 15:41:32 Status change for id  1
+2022/01/25 15:42:56 Starting application
+2022/01/25 15:44:21 Starting application
+2022/01/25 15:44:43 Status change for id  1
+2022/01/25 15:58:45 Starting application
+2022/01/25 15:59:01 Status change for id  1
+2022/01/25 15:59:01 Sending sms to anik4good@gmail.com
+2022/01/25 15:59:41 Starting application
+2022/01/25 15:59:41 Status change for id  1
+2022/01/25 15:59:41 Sending sms to anik4good@gmail.com
+2022/01/25 16:05:56 Starting application
+2022/01/25 16:06:10 Status change for id  1
+2022/01/25 16:06:10 Sending sms to anik4good@gmail.com
+2022/01/25 16:08:31 Starting application
+2022/01/25 16:08:41 Status change for id  1
+2022/01/25 16:08:41 Sending sms to anik4good@gmail.com
+2022/01/25 16:23:41 Starting application
+2022/01/25 16:23:49 Status change for id  1
+2022/01/25 16:23:49 Sending sms to anik4good@gmail.com
+2022/01/25 16:29:50 Starting application
+2022/01/25 16:30:12 Status change for id  1
+2022/01/25 16:30:12 Sending sms to anik4good@gmail.com
+2022/01/25 16:30:12 Status change for id  2
+2022/01/25 16:30:12 Sending sms to anik@elitbuzz-bd.com
