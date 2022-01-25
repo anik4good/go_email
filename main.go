@@ -172,7 +172,7 @@ func InitDatabase() *sql.DB {
 		ParseTime:            true,
 	}
 
-	// open the database connection with the config. if encounter any error print the error and exit from program
+	// open the database connssection with the config. if encounter any error print the error and exit from program
 	database, error := sql.Open("mysql", cfg.FormatDSN())
 	if error != nil {
 		logger.Fatalln("Error connecting to database", error)
