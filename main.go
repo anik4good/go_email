@@ -2,7 +2,6 @@ package main
 
 import (
 	"database/sql"
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -10,6 +9,8 @@ import (
 	"os"
 	"time"
 
+	Controller "github.com/anik4good/go_email_simple/app/controllers/api"
+	"github.com/anik4good/go_email_simple/routes"
 	"github.com/bxcodec/faker/v3"
 	"github.com/go-sql-driver/mysql"
 	"github.com/gofiber/fiber/v2"
@@ -39,6 +40,10 @@ var database *sql.DB
 var logger *log.Logger
 var confg Config
 
+func SetUpRoutes(app *fiber.App) {
+	app.Get("/hello", Controller.Hello)
+}
+
 func main() {
 
 	configFile, err := ioutil.ReadFile("config.yaml")
@@ -63,28 +68,30 @@ func main() {
 		return c.SendString("Hello, World 👋!")
 	})
 
+	routes.SetUpRoutes(app)
+
 	// GET /api/register
-	app.Post("/api/create", func(c *fiber.Ctx) error {
-
-		//	data, _ := json.MarshalIndent(app.Stack(), "", "  ")
-		//	fmt.Println(string(data))
-		requestBody := c.Body()
-		var email QueuedEmail
-		json.Unmarshal(requestBody, &email)
-		_, err := database.Exec(`INSERT INTO users(name, email,status) VALUES (?,?,?)`, email.Name, email.Email, email.Status)
-		if err != nil {
-
-			//	panic(err)
-
-			fmt.Println("error creating user:", email.Name)
-			json.NewEncoder(c).Encode("error creating user:")
-			return nil
-			//	json.NewEncoder(c).Encode("error creating user:")
-		}
-
-		json.NewEncoder(c).Encode("received Email: " + email.Email)
-		return nil
-	}).Name("api")
+	//app.Post("/api/create", func(c *fiber.Ctx) error {
+	//
+	//	//	data, _ := json.MarshalIndent(app.Stack(), "", "  ")
+	//	//	fmt.Println(string(data))
+	//	requestBody := c.Body()
+	//	var email QueuedEmail
+	//	json.Unmarshal(requestBody, &email)
+	//	_, err := database.Exec(`INSERT INTO users(name, email,status) VALUES (?,?,?)`, email.Name, email.Email, email.Status)
+	//	if err != nil {
+	//
+	//		//	panic(err)
+	//
+	//		fmt.Println("error creating user:", email.Name)
+	//		json.NewEncoder(c).Encode("error creating user:")
+	//		return nil
+	//		//	json.NewEncoder(c).Encode("error creating user:")
+	//	}
+	//
+	//	json.NewEncoder(c).Encode("received Email: " + email.Email)
+	//	return nil
+	//}).Name("api")
 
 	go app.Listen(":3000")
 

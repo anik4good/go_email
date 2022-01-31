@@ -1,4 +1,4 @@
-module github.com/anik4good/go_email
+module github.com/anik4good/go_email_simple
 
 go 1.17
 
